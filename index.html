@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impacto anual de la experiencia del cliente · Inverfin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1729;--paper:#F2F4F7;--card:#FFF;--line:#D3D9E3;--soft:#5A6781;--teal:#0E7C6B;--coral:#E2544C;--amber:#C88A15;--violet:#5B4B9E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 70px}
+.top{background:var(--ink);color:#fff;padding:34px 20px 0}
+.top-in{max-width:1040px;margin:0 auto}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.5;margin:0 0 12px}
+.top h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(22px,3.4vw,32px);letter-spacing:-.02em;margin:0 0 4px}
+.top .sub{opacity:.62;font-size:14px;margin:0 0 26px;max-width:66ch}
+nav{display:flex;gap:2px;flex-wrap:wrap}
+nav button{background:none;border:0;color:rgba(255,255,255,.55);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:13px 15px;cursor:pointer;border-bottom:2px solid transparent}
+nav button:hover{color:#fff}
+nav button[aria-selected="true"]{color:#fff;border-bottom-color:var(--coral)}
+nav button:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+[role=tabpanel][hidden]{display:none}
+[role=tabpanel]{padding-top:26px}
+h2{font-family:'Space Grotesk',sans-serif;font-size:19px;margin:0 0 5px}
+.lead{color:var(--soft);font-size:14px;margin:0 0 22px;max-width:80ch}
+h3.sec{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);font-weight:400;margin:34px 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:24px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+.gtit{font-family:'Space Grotesk',sans-serif;font-size:14px;margin:0 0 16px}
+.foot{font-size:12px;color:var(--soft);margin:16px 0 0;padding-top:12px;border-top:1px solid var(--line)}
+.thesis{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:4px;padding:26px 28px;margin-bottom:22px}
+.thesis p{font-family:'Space Grotesk',sans-serif;font-size:clamp(19px,3vw,27px);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin:0}
+.thesis span{color:var(--coral)}
+.thesis .d{font-family:'IBM Plex Sans';font-weight:400;font-size:14px;color:var(--soft);margin-top:12px;max-width:76ch;letter-spacing:0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px;border-left:3px solid var(--line)}
+.kpi.g{border-left-color:var(--teal)}.kpi.r{border-left-color:var(--coral)}.kpi.y{border-left-color:var(--amber)}
+.kpi .n{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;line-height:.95;letter-spacing:-.02em}
+.kpi .n small{font-size:14px;font-weight:500;letter-spacing:0}
+.kpi .l{font-size:11.5px;color:var(--soft);margin-top:7px;line-height:1.35}
+.money{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--card)}
+.mstep{padding:20px;border-right:1px solid var(--line)}
+.mstep:last-child{border-right:none;background:rgba(226,84,76,.05)}
+.mstep .t{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:10px}
+.mstep .v{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.mstep .v small{font-size:13px;font-weight:500;color:var(--soft);display:block;margin-top:4px;letter-spacing:0}
+.mstep .d{font-size:12px;color:var(--soft);margin-top:9px}
+/* curva */
+.plot{position:relative;padding-left:112px}
+.bands{position:absolute;left:0;right:0;top:0;height:250px}
+.band{position:absolute;left:0;right:0;display:flex;align-items:center}
+.band span{width:104px;padding-right:10px;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);line-height:1.2}
+.band i{position:absolute;left:112px;right:0;top:0;height:100%}
+.stages{display:flex;gap:5px;position:relative}
+.st{flex:1;min-width:0;text-align:center}
+.stem{height:250px;position:relative}
+.dot{position:absolute;left:50%;width:14px;height:14px;border-radius:50%;transform:translate(-50%,-50%)}
+.val{position:absolute;left:50%;transform:translateX(-50%);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600}
+.lab{font-size:12px;line-height:1.25;margin-top:10px;color:var(--soft)}
+.lab b{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:400;color:var(--soft);opacity:.7;margin-top:3px}
+/* barras */
+.bar-row{display:grid;grid-template-columns:170px 1fr 92px;gap:14px;align-items:center;font-size:13.5px;margin-bottom:12px}
+.track{position:relative;height:22px;background:rgba(14,23,41,.05);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.fill{position:absolute;left:0;top:0;bottom:0;width:0;transition:width 1s cubic-bezier(.22,1,.36,1)}
+.tick{position:absolute;top:0;bottom:0;width:1px;background:rgba(14,23,41,.1)}
+.bar-row em{font-family:'IBM Plex Mono',monospace;font-style:normal;text-align:right;font-weight:600;font-size:12.5px}
+.axis{display:grid;grid-template-columns:170px 1fr 92px;gap:14px;margin-bottom:8px}
+.axis-in{position:relative;height:14px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--soft)}
+.axis-in span{position:absolute;transform:translateX(-50%);top:0}
+.npsbar{position:relative;height:22px;background:rgba(14,23,41,.05);border:1px solid var(--line);border-radius:3px}
+.npsmid{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--ink);opacity:.35}
+.npsfill{position:absolute;top:0;bottom:0;transition:width 1s cubic-bezier(.22,1,.36,1)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid var(--line);padding:0 10px 10px 0;font-weight:400}
+td{padding:11px 10px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.num{font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-align:right;white-space:nowrap}
+ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{margin-bottom:0}
+.q{border-left:2px solid var(--coral);padding-left:12px;margin:0 0 14px;font-style:italic;font-size:13px;color:var(--soft)}
+.q b{display:block;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:4px}
+.act{display:grid;grid-template-columns:80px 1fr 215px;gap:16px;padding:17px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.act:last-child{border-bottom:none}
+.act .w{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.act .t{font-size:14px;font-weight:600}
+.act .i{font-size:12.5px;color:var(--soft)}
+.score{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;background:var(--ink);color:#fff;border-radius:4px;padding:26px 30px;margin-top:22px}
+.score .big{font-family:'Space Grotesk',sans-serif;font-size:50px;font-weight:700;line-height:.9}
+.score .big small{font-size:18px;opacity:.55;font-weight:500}
+.score .cap{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-top:8px}
+.score p{margin:0;opacity:.78;font-size:14px;max-width:62ch}
+.note{font-size:11.5px;color:var(--soft);margin-top:24px;line-height:1.6}
+@media (max-width:760px){
+ .bar-row,.axis{grid-template-columns:104px 1fr 74px;gap:9px;font-size:12px}
+ .act{grid-template-columns:1fr;gap:4px}.act .w{order:-1}
+ .score{grid-template-columns:1fr;gap:16px;padding:22px}
+ .mstep{border-right:none;border-bottom:1px solid var(--line)}
+ .plot{padding-left:0}.bands{height:190px}.band span{display:none}.band i{left:0}
+ .stem{height:190px}.lab{font-size:10px}
+ .scroll{overflow-x:auto}
+}
+@media (prefers-reduced-motion:reduce){.fill,.npsfill{transition:none}}
+@media print{nav{display:none}[role=tabpanel][hidden]{display:block!important}.top{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <p class="eyebrow">Experiencia del Cliente y Calidad Comercial · Impacto anual</p>
+    <h1>Qué cuesta al año no gestionar la experiencia del cliente</h1>
+    <p class="sub">Análisis de sentimiento sobre 1.099 comentarios de NPS de junio 2026, proyectado a doce meses · 26.799 clientes facturados por mes · ticket promedio Gs. 3.072.000 · margen de contribución 31,8% · ciclo de recompra de 12 a 15 meses</p>
+    <nav role="tablist">
+      <button role="tab" aria-selected="true" aria-controls="p1" id="t1">Resumen</button>
+      <button role="tab" aria-selected="false" aria-controls="p2" id="t2">Sentimiento</button>
+      <button role="tab" aria-selected="false" aria-controls="p3" id="t3">Pérdida anual</button>
+      <button role="tab" aria-selected="false" aria-controls="p4" id="t4">Cierre del ciclo</button>
+      <button role="tab" aria-selected="false" aria-controls="p5" id="t5">Plan</button>
+      <button role="tab" aria-selected="false" aria-controls="p6" id="t6">Metodología</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- 1 RESUMEN -->
+<section role="tabpanel" id="p1" aria-labelledby="t1">
+  <div class="thesis">
+    <p>Un NPS de +76 que cuesta <span>Gs. 15 mil millones al año</span>.</p>
+    <p class="d">El indicador global es excelente. Debajo, el recorrido del cliente se quiebra después de la venta: entrega, postventa y cobranza concentran toda la insatisfacción. Con un ciclo de recompra de 12 a 15 meses, el cliente que se va no vuelve a aparecer hasta dentro de más de un año, y para entonces ya compró en otro lado.</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi g"><div class="n">+75,6</div><div class="l">NPS de junio<br>1.099 respuestas</div></div>
+    <div class="kpi r"><div class="n">−1,00</div><div class="l">Polaridad de cobranza<br>ningún elogio en 1.099</div></div>
+    <div class="kpi r"><div class="n">75,5<small>%</small></div><div class="l">Detractores nunca contactados</div></div>
+    <div class="kpi g"><div class="n">54,2<small>%</small></div><div class="l">Recuperación cuando sí se gestiona</div></div>
+    <div class="kpi r"><div class="n">13.201</div><div class="l">Clientes perdidos por año</div></div>
+    <div class="kpi r"><div class="n">15,1<small> mil M</small></div><div class="l">Margen anual en riesgo (Gs.)</div></div>
+  </div>
+
+  <h3 class="sec">De la insatisfacción al dinero · escala anual</h3>
+  <div class="money">
+    <div class="mstep"><div class="t">Facturación anual</div><div class="v">Gs. 988<small>mil millones · 321.588 facturaciones</small></div><div class="d">26.799 clientes por mes × 12</div></div>
+    <div class="mstep"><div class="t">Margen de contribución</div><div class="v">Gs. 314<small>mil millones · 31,8%</small></div><div class="d">Gs. 976.896 de margen por compra</div></div>
+    <div class="mstep"><div class="t">Clientes perdidos al año</div><div class="v">13.201<small>4,1% de la base facturada</small></div><div class="d">Más 4.148 prospectos por boca a boca</div></div>
+    <div class="mstep"><div class="t">Pérdida anual estimada</div><div class="v">Gs. 15,1<small>mil millones de margen</small></div><div class="d">Gs. 47,4 mil millones en ventas · 15.422 tickets</div></div>
+  </div>
+
+  <h3 class="sec">Dónde se quiebra el recorrido</h3>
+  <div class="card" style="margin-bottom:14px">
+    <h4 class="gtit">Sentimiento del cliente por etapa · encuesta de NPS de junio</h4>
+    <p style="font-size:13.5px;color:var(--soft);margin:0 0 22px;max-width:80ch">Balance entre lo que el cliente menciona como lo que más le gustó y lo que menos le gustó, tematizado por etapa. Escala de −1 a +1; las franjas de fondo indican cómo se lee cada valor. <b style="color:var(--ink)">n</b> es el número de menciones que sostiene cada punto.</p>
+    <div class="plot"><div class="bands" id="bands"></div><div class="stages" id="stages"></div></div>
+    <p class="foot">La curva reproduce, con una fuente distinta y un método distinto, el mismo patrón hallado en la auditoría de 20 conversaciones de WhatsApp entrante: todo positivo hasta que la venta se concreta, todo negativo después. Y lo extiende a cobranza, que el chat comercial no cubre.</p>
+  </div>
+
+  <div class="grid3">
+    <div class="card" style="border-left:3px solid var(--coral)">
+      <h4 class="gtit">Cobranza: ni un solo elogio</h4>
+      <p style="font-size:13.5px;color:var(--soft);margin:0 0 14px">En 1.099 encuestas ningún cliente mencionó la cobranza entre lo que más le gustó, y 87 la mencionaron entre lo que menos. Es la etapa con más contacto a lo largo del año y la única sin un solo comentario favorable. El patrón no es el moroso: es el cliente al día recibiendo llamadas antes del vencimiento.</p>
+      <p class="q"><b>Detractor · NPS 5</b>"Yo nunca me atraso con mis cuotas y de igual manera me mandan mensajes para pagar."</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--coral)">
+      <h4 class="gtit">Postventa: el peor ratio del recorrido</h4>
+      <p style="font-size:13.5px;color:var(--soft);margin:0 0 14px">Un elogio contra catorce quejas. Instalaciones que no llegan, garantías invocadas sin respuesta, armados incompletos. Es el único tema del mes con NPS negativo, en −36.</p>
+      <p class="q"><b>Detractor · NPS 0</b>"No cumplen con lo pactado. No me instalaron mi aire. Crean problemas. Decepción total."</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--teal)">
+      <h4 class="gtit">La venta no es el problema</h4>
+      <p style="font-size:13.5px;color:var(--soft);margin:0 0 14px">Asesoría y venta marca +0,86 con 484 menciones: es el activo más sólido de la compañía y el mejor puntaje de todo el recorrido. El diagnóstico no dice que se atienda mal, dice que se atiende muy bien y después no se entrega lo prometido.</p>
+      <p class="q" style="border-left-color:var(--teal)"><b style="color:var(--teal)">Promotor · NPS 10</b>"Calidez humana en la atención al cliente por parte de los funcionarios. Excelente."</p>
+    </div>
+  </div>
+
+  <div class="score">
+    <div><div class="big">Gs. 2,5<small> mil M</small></div><div class="cap">Recuperable por año</div></div>
+    <p>Es lo que se protege pasando de contactar al 25% de los detractores, como hoy, a contactar al 80%, aplicando la tasa de recuperación que el propio equipo ya demuestra. Unos Gs. 207 millones de margen por mes. No requiere inversión en producto ni en precio: requiere llamar a quien ya levantó la mano.</p>
+  </div>
+</section>
+
+<!-- 2 SENTIMIENTO -->
+<section role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+  <h2>Análisis de sentimiento</h2>
+  <p class="lead">Dos lecturas complementarias. La primera mide la polaridad de cada etapa del recorrido contraponiendo elogios y quejas. La segunda mide el NPS de quienes comentaron cada tema, que revela qué tan tóxico es cada motivo para la lealtad.</p>
+
+  <div class="card" style="margin-bottom:14px">
+    <h4 class="gtit">Balance de menciones por etapa</h4>
+    <div class="scroll"><table>
+      <thead><tr><th>Etapa</th><th>Elogios</th><th>Quejas</th><th>Menciones</th><th>Polaridad</th><th>Lectura</th></tr></thead>
+      <tbody>
+        <tr><td>Asesoría y venta</td><td class="num">450</td><td class="num">34</td><td class="num">484</td><td class="num" style="color:var(--teal)">+0,86</td><td>Entusiasmo</td></tr>
+        <tr><td>Trámite y crédito</td><td class="num">215</td><td class="num">41</td><td class="num">256</td><td class="num" style="color:var(--teal)">+0,68</td><td>Entusiasmo</td></tr>
+        <tr><td>Producto y stock</td><td class="num">58</td><td class="num">12</td><td class="num">70</td><td class="num" style="color:var(--teal)">+0,66</td><td>Entusiasmo</td></tr>
+        <tr style="background:rgba(226,84,76,.05)"><td>Entrega</td><td class="num">12</td><td class="num">44</td><td class="num">56</td><td class="num" style="color:var(--coral)">−0,57</td><td>Ruptura</td></tr>
+        <tr style="background:rgba(226,84,76,.05)"><td>Postventa</td><td class="num">1</td><td class="num">14</td><td class="num">15</td><td class="num" style="color:var(--coral)">−0,87</td><td>Ruptura</td></tr>
+        <tr style="background:rgba(226,84,76,.05)"><td>Cobranza</td><td class="num">0</td><td class="num">87</td><td class="num">87</td><td class="num" style="color:var(--coral)">−1,00</td><td>Ruptura</td></tr>
+      </tbody>
+    </table></div>
+    <p class="foot">La polaridad es (elogios − quejas) ÷ menciones totales. El −1,00 de cobranza es en parte estructural, porque nadie elogia espontáneamente que le cobren; lo informativo no es el valor exacto sino que su volumen de queja sea el mayor de todo el recorrido.</p>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <h4 class="gtit">NPS de quienes comentaron cada tema · escala −100 a +100</h4>
+    <div id="npsbars"></div>
+    <p class="foot">Un tema puede tener pocas menciones y aun así ser crítico: postventa reúne 14 comentarios pero 8 son de detractores.</p>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <h4 class="gtit">Volumen de menciones negativas por tema</h4>
+    <div id="volbars"></div>
+    <p class="foot">Sobre 1.099 respuestas. Se excluyen los 651 comentarios positivos y los 188 sin detalle específico.</p>
+  </div>
+
+  <div class="grid3">
+    <div class="card">
+      <h4 class="gtit">Cobranza · 87 menciones</h4>
+      <ul>
+        <li>Llamadas y mensajes antes del vencimiento, al cliente que está al día.</li>
+        <li>Frecuencia percibida como hostigamiento, varias veces al día.</li>
+        <li>Contacto a terceros y familiares ajenos a la operación.</li>
+        <li>Mensajes de cobro después de que el pago ya fue realizado: falla de conciliación, no de gestión.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="gtit">Entrega · 44 menciones</h4>
+      <ul>
+        <li>Horarios comprometidos que no se cumplen; entregas al segundo o tercer día.</li>
+        <li>Entregas parciales, con piezas o accesorios pendientes durante semanas.</li>
+        <li>Productos dañados o distintos al solicitado.</li>
+        <li>El cliente descargando la mercadería por su cuenta.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="gtit">Postventa · 14 menciones</h4>
+      <ul>
+        <li>Instalaciones que no se realizan o se demoran días tras la entrega.</li>
+        <li>Garantías invocadas sin respuesta.</li>
+        <li>Armado de muebles incompleto, con visitas sucesivas.</li>
+        <li>Productos con falla de origen sin resolución.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="gtit">Atención y seguimiento de venta · 34</h4>
+      <ul>
+        <li>El vendedor deja de responder una vez cerrada la venta.</li>
+        <li>Cambios de precio después de acordada la operación.</li>
+        <li>Reclamos que solo se resuelven yendo a la sucursal.</li>
+        <li>Canales de WhatsApp sin retorno: mensajes vistos y no respondidos.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="gtit">Stock y crédito · 50 menciones</h4>
+      <ul>
+        <li>Artículos publicados sin disponibilidad real en la sucursal.</li>
+        <li>Demoras en devolución, nota de crédito y refacturación.</li>
+        <li>Dificultad para retirar pagarés cancelados, con gestiones duplicadas.</li>
+        <li>Protocolos percibidos como excesivos para concretar la compra.</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid var(--violet)">
+      <h4 class="gtit">Convergencia con la auditoría de chats</h4>
+      <ul>
+        <li>Entrega, stock y postventa son exactamente los temas que produjeron el sentimiento más negativo en las 20 conversaciones de WhatsApp entrante.</li>
+        <li>Dos fuentes independientes, dos métodos distintos, un mismo diagnóstico.</li>
+        <li>Esa convergencia es el argumento más sólido para priorizar logística por encima de cualquier acción sobre el discurso comercial.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3 PERDIDA ANUAL -->
+<section role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+  <h2>Estimación de la pérdida anual</h2>
+  <p class="lead">El modelo proyecta las doce cohortes mensuales del año. Estima cuántos clientes no volverán a comprar por encima de la tasa natural de un cliente satisfecho, y valoriza esa diferencia al margen de contribución, ajustada por el ciclo real de recompra.</p>
+
+  <h3 class="sec">El ciclo de recompra cambia la aritmética</h3>
+  <div class="card" style="margin-bottom:14px">
+    <div class="scroll"><table>
+      <thead><tr><th>Ciclo de recompra</th><th>Compras por año</th><th>Valor anual del cliente</th><th>Efecto sobre la pérdida</th></tr></thead>
+      <tbody>
+        <tr><td>12 meses</td><td class="num">1,00</td><td class="num">Gs. 976.896</td><td>Escenario máximo</td></tr>
+        <tr style="background:rgba(91,75,158,.05)"><td><b>13,5 meses (referencia)</b></td><td class="num"><b>0,89</b></td><td class="num"><b>Gs. 868.352</b></td><td>Punto medio del rango informado</td></tr>
+        <tr><td>15 meses</td><td class="num">0,80</td><td class="num">Gs. 781.517</td><td>Escenario mínimo, −20% sobre 12 meses</td></tr>
+      </tbody>
+    </table></div>
+    <p class="foot">Con un ciclo superior a doce meses, un mismo cliente prácticamente no se repite dentro del año calendario. Eso permite sumar las doce cohortes mensuales sin doble conteo: 321.588 facturaciones al año corresponden, en la práctica, a clientes distintos. Y tiene una implicancia operativa importante: el cliente insatisfecho de junio no vuelve a aparecer hasta mediados de 2027, cuando ya es tarde para recuperarlo.</p>
+  </div>
+
+  <h3 class="sec">Escenarios anuales</h3>
+  <div class="card scroll" style="margin-bottom:14px">
+    <table>
+      <thead><tr><th>Escenario</th><th>Fuga pasivos</th><th>Fuga detractores</th><th>Clientes perdidos</th><th>Margen perdido</th><th>Ventas equivalentes</th><th>% margen anual</th></tr></thead>
+      <tbody>
+        <tr><td><b>Conservador</b></td><td class="num">+8 pp</td><td class="num">+20 pp</td><td class="num">7.409</td><td class="num">Gs. 8,4 mil M</td><td class="num">Gs. 26,3 mil M</td><td class="num">2,7%</td></tr>
+        <tr style="background:rgba(226,84,76,.06)"><td><b>Base</b></td><td class="num">+15 pp</td><td class="num">+35 pp</td><td class="num">13.201</td><td class="num"><b>Gs. 15,1 mil M</b></td><td class="num"><b>Gs. 47,4 mil M</b></td><td class="num"><b>4,8%</b></td></tr>
+        <tr><td><b>Severo</b></td><td class="num">+22 pp</td><td class="num">+50 pp</td><td class="num">18.993</td><td class="num">Gs. 22,3 mil M</td><td class="num">Gs. 70,0 mil M</td><td class="num">7,1%</td></tr>
+      </tbody>
+    </table>
+    <p class="foot">La fuga se expresa en puntos porcentuales <b>por encima</b> de la tasa natural de no recompra de un promotor, de modo que el modelo aísla el efecto atribuible a la mala experiencia y no la rotación normal del negocio. Cada escenario incluye la pérdida por boca a boca negativo, calculada sobre el número de personas a las que un detractor comenta su experiencia y la proporción de ellas que habría comprado.</p>
+  </div>
+
+  <h3 class="sec">El escenario base, desarmado</h3>
+  <div class="grid3" style="margin-bottom:14px">
+    <div class="card" style="border-left:3px solid var(--coral)">
+      <h4 class="gtit">Composición de la pérdida</h4>
+      <ul>
+        <li><b>13.201 clientes perdidos al año.</b> 1.100 por mes: 293 pasivos y 807 detractores que no vuelven.</li>
+        <li><b>4.148 prospectos no captados</b> por boca a boca negativo.</li>
+        <li>Valorizados a Gs. 868.352 de margen anual por cliente, según el ciclo de 13,5 meses.</li>
+        <li><b>Total: Gs. 15,1 mil millones de margen</b>, equivalentes a Gs. 47,4 mil millones de facturación o 15.422 tickets promedio.</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid var(--amber)">
+      <h4 class="gtit">Si se mide la relación completa</h4>
+      <ul>
+        <li>El modelo base valoriza solo la próxima compra que el cliente no hará.</li>
+        <li>Un cliente perdido no vuelve nunca, no una vez. A dos años la pérdida asciende a <b>Gs. 30,1 mil millones</b>; a tres años, a <b>Gs. 45,2 mil millones</b>.</li>
+        <li>Esa es la cifra relevante para decidir una inversión estructural en logística o en postventa, cuyo retorno también se extiende en el tiempo.</li>
+        <li>Para el presupuesto del ejercicio, la referencia sigue siendo la cifra a doce meses.</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid var(--teal)">
+      <h4 class="gtit">Cuánto es recuperable</h4>
+      <ul>
+        <li>27.657 detractores al año, de los cuales hoy se contacta al 25,5%.</li>
+        <li>Con la tasa de éxito observada del 54,2%, llevar la cobertura al 80% rescata <b>8.169 detractores por año</b>.</li>
+        <li>Margen protegido: <b>Gs. 2,5 mil millones al año</b>, unos Gs. 207 millones por mes.</li>
+        <li>Es el 16% de la pérdida estimada, obtenido sin invertir en precio, producto ni publicidad.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--amber)">
+    <h4 class="gtit">Por qué la cifra es probablemente conservadora</h4>
+    <div class="grid3">
+      <ul>
+        <li>Solo el 4,1% de los clientes respondió la encuesta. Las encuestas de NPS sobrerrepresentan al cliente satisfecho: el 8,6% de detractores es más un piso que un techo.</li>
+        <li>No incluye el costo de la cartera. Un cliente irritado por la gestión de cobranza puede deteriorar su comportamiento de pago, y ese efecto no está valorizado.</li>
+      </ul>
+      <ul>
+        <li>No incluye el costo de reposición. Adquirir un cliente nuevo cuesta más que retener uno existente, y el modelo no carga esa diferencia.</li>
+        <li>No incluye el efecto sobre el ticket. Un cliente insatisfecho que vuelve suele comprar menos, no solo menos veces.</li>
+      </ul>
+      <ul>
+        <li>El componente de boca a boca es el más frágil del modelo. El escenario conservador lo reduce a la mitad y aun así la pérdida supera los Gs. 8 mil millones.</li>
+        <li>Ninguno de estos efectos está incluido, y todos empujan en la misma dirección.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4 CIERRE -->
+<section role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+  <h2>El cierre del ciclo con el cliente</h2>
+  <p class="lead">El dato más accionable del mes no está en el sentimiento sino en la gestión posterior. Los 94 detractores fueron correctamente identificados y marcados para seguimiento. Lo que falló fue lo que vino después.</p>
+
+  <div class="kpis">
+    <div class="kpi r"><div class="n">94</div><div class="l">Detractores identificados</div></div>
+    <div class="kpi r"><div class="n">94</div><div class="l">Marcados «necesita seguimiento»</div></div>
+    <div class="kpi y"><div class="n">24</div><div class="l">Efectivamente gestionados</div></div>
+    <div class="kpi r"><div class="n">71</div><div class="l">Marcados «no accionable», sin contacto</div></div>
+    <div class="kpi g"><div class="n">13</div><div class="l">Cerrados con éxito</div></div>
+    <div class="kpi y"><div class="n">11</div><div class="l">Cerrados sin éxito</div></div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px;border-left:3px solid var(--coral)">
+    <h4 class="gtit">La lectura</h4>
+    <p style="font-size:14px;margin:0 0 12px">La detección funciona: el 100% de los detractores fue identificado y clasificado. La ejecución no: tres de cada cuatro quedaron en estado «no accionable con cliente» sin registro de contacto, acción ni fecha de gestión.</p>
+    <p style="font-size:14px;margin:0">Y sin embargo, <b>de los 24 casos que sí se trabajaron, 13 cerraron con éxito</b>. Una tasa del 54% sobre clientes que habían declarado que no recomendarían la empresa. La capacidad existe y está probada; lo que falta es cobertura. Con un ciclo de recompra de 12 a 15 meses, la ventana para actuar es ahora: si el contacto no ocurre en las semanas siguientes al reclamo, el cliente no vuelve a aparecer hasta el año siguiente.</p>
+  </div>
+
+  <div class="grid3">
+    <div class="card">
+      <h4 class="gtit">Tiempos de gestión observados</h4>
+      <ul>
+        <li>Los casos gestionados se iniciaron mayormente entre 1 y 8 días después de la respuesta.</li>
+        <li>El cierre tomó entre 1 y 14 días, con concentración en 2 y 3 días.</li>
+        <li>Los tiempos no son el problema: cuando alguien toma el caso, lo resuelve rápido.</li>
+        <li>Recomendación: formalizar un compromiso de contacto dentro de las 48 horas, que hoy ya se cumple de hecho en los casos atendidos.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="gtit">Qué revisar en «no accionable»</h4>
+      <ul>
+        <li>El estado agrupa situaciones distintas: cliente sin datos de contacto, comentario genérico sin reclamo concreto, y caso simplemente no tomado.</li>
+        <li>Hoy no es posible distinguirlas, y por eso el 75,5% no es interpretable.</li>
+        <li>Separar el estado en causas explícitas es prerrequisito para medir la cobertura real.</li>
+        <li>Sospecha razonable: buena parte de esos 71 casos sí eran contactables.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="gtit">El caso de los pasivos</h4>
+      <ul>
+        <li>80 pasivos en el mes, ninguno marcado para seguimiento.</li>
+        <li>25 escribieron un comentario positivo pero puntuaron 7 u 8: son promotores a un paso de distancia.</li>
+        <li>17 mencionaron cobranza, el mayor grupo temático del segmento.</li>
+        <li>Es el segmento de mayor retorno por esfuerzo: mover un pasivo a promotor cuesta menos que rescatar a un detractor.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 5 PLAN -->
+<section role="tabpanel" id="p5" aria-labelledby="t5" hidden>
+  <h2>Plan de acción</h2>
+  <p class="lead">Ordenado por retorno sobre el margen en riesgo. Las primeras acciones no requieren inversión: son cambios de proceso sobre capacidades que la organización ya tiene.</p>
+  <div class="card">
+    <div class="act"><span class="w">Inmediato</span><span class="t">Contactar a los 71 detractores no gestionados de junio</span><span class="i">Con la tasa de recuperación observada del 54%, es la acción de mayor retorno inmediato disponible.</span></div>
+    <div class="act"><span class="w">30 días</span><span class="t">Meta de cobertura del 80% de detractores, con contacto dentro de las 48 horas</span><span class="i">Protege del orden de Gs. 2,5 mil millones al año. Requiere asignación nominal de responsable por caso.</span></div>
+    <div class="act"><span class="w">30 días</span><span class="t">Desagregar el estado «no accionable» en causas explícitas</span><span class="i">Sin esto, el 75,5% de los casos no es interpretable y la cobertura no se puede medir.</span></div>
+    <div class="act"><span class="w">30 días</span><span class="t">Suspender el contacto de cobranza previo al vencimiento para clientes sin historial de mora</span><span class="i">87 menciones y polaridad −1,00. Mayor tema de fricción del recorrido, aplicado sobre la mejor cartera. Costo de corrección: cero.</span></div>
+    <div class="act"><span class="w">60 días</span><span class="t">Conciliación de pagos en línea antes de disparar el recordatorio</span><span class="i">Elimina los mensajes de cobro a clientes que ya pagaron, la falla que más irrita al cliente cumplidor.</span></div>
+    <div class="act"><span class="w">60 días</span><span class="t">Protocolo de postventa con compromiso de instalación y armado</span><span class="i">Polaridad −0,87 y único tema con NPS negativo. Fecha comprometida al momento de la entrega y confirmación al cliente.</span></div>
+    <div class="act"><span class="w">90 días</span><span class="t">Publicación de stock real por sucursal y bloqueo de venta sin disponibilidad confirmada</span><span class="i">Coincide con el hallazgo de la auditoría de conversaciones. Ataca entrega y stock simultáneamente.</span></div>
+    <div class="act"><span class="w">90 días</span><span class="t">Campaña de recontacto anticipado al mes 11 del ciclo</span><span class="i">Con recompra a 12-15 meses, adelantarse al vencimiento del ciclo es la única forma de recuperar al cliente antes de que compre en otro lado.</span></div>
+    <div class="act"><span class="w">90 días</span><span class="t">Campaña sobre pasivos con comentario positivo</span><span class="i">25 clientes a un punto de convertirse en promotores. Mayor retorno por esfuerzo de todo el lote.</span></div>
+    <div class="act"><span class="w">Continuo</span><span class="t">Tablero mensual de sentimiento por etapa con la pérdida valorizada</span><span class="i">Convierte la encuesta en un instrumento de gestión con impacto expresado en guaraníes, no en puntos.</span></div>
+  </div>
+</section>
+
+<!-- 6 METODOLOGIA -->
+<section role="tabpanel" id="p6" aria-labelledby="t6" hidden>
+  <h2>Metodología y supuestos</h2>
+  <p class="lead">Toda estimación de pérdida descansa en supuestos. Los que siguen están explicitados para que el comité pueda discutirlos y reemplazarlos por datos propios cuando estén disponibles.</p>
+
+  <h3 class="sec">Supuestos del modelo económico</h3>
+  <div class="card" style="margin-bottom:14px">
+    <div class="act"><span class="w">Dato</span><span class="t">Ciclo de recompra de 12 a 15 meses</span><span class="i">Aportado por el negocio. Se usa 13,5 meses como punto medio, equivalente a 0,89 compras por cliente y por año. Los escenarios de 12 y 15 meses mueven la pérdida en ±11%.</span></div>
+    <div class="act"><span class="w">Supuesto</span><span class="t">Fuga incremental de detractores: +35 pp sobre la base</span><span class="i">Rango de literatura de gestión de clientes. Debe reemplazarse por la tasa real de recompra a 15 meses de la propia cartera, que el sistema comercial ya permite calcular.</span></div>
+    <div class="act"><span class="w">Supuesto</span><span class="t">Fuga incremental de pasivos: +15 pp</span><span class="i">Mismo criterio. El pasivo es más recuperable que el detractor pero no es indiferente.</span></div>
+    <div class="act"><span class="w">Supuesto</span><span class="t">Doce cohortes mensuales sin solapamiento</span><span class="i">Válido porque el ciclo de recompra supera los doce meses: un cliente no se repite dentro del año calendario. Si el ciclo real fuera menor a doce meses, habría doble conteo y la cifra bajaría.</span></div>
+    <div class="act"><span class="w">Supuesto</span><span class="t">Boca a boca: 2,5 personas por detractor, 6% de conversión perdida</span><span class="i">El componente más frágil del modelo. El escenario conservador lo reduce a la mitad y aun así la pérdida supera los Gs. 8 mil millones.</span></div>
+    <div class="act"><span class="w">Supuesto</span><span class="t">La muestra representa a la base facturada</span><span class="i">1.099 respuestas sobre 26.799 clientes. Con 4,1% de tasa de respuesta y sesgo probable hacia el cliente satisfecho, la proporción de detractores es más un piso que un techo.</span></div>
+    <div class="act"><span class="w">Supuesto</span><span class="t">Margen de contribución y ticket constantes</span><span class="i">Se aplica el 31,8% y los Gs. 3.072.000 informados, uniformes por categoría. Un mix distinto entre clientes que se van y los que se quedan alteraría el resultado.</span></div>
+  </div>
+
+  <h3 class="sec">Sobre el análisis de sentimiento</h3>
+  <div class="grid3">
+    <div class="card">
+      <h4 class="gtit">Cómo se construyó la polaridad</h4>
+      <ul>
+        <li>La encuesta tiene dos campos abiertos: lo que más gustó y lo que menos gustó. Ambos se tematizaron por etapa del recorrido.</li>
+        <li>La polaridad de cada etapa es (elogios − quejas) ÷ menciones totales, en escala de −1 a +1.</li>
+        <li>Ese método evita depender de un clasificador automático sobre texto en español paraguayo informal, que es donde los modelos entrenados con español neutro fallan.</li>
+        <li>El NPS por tema se calcula aparte, como diferencia entre el porcentaje de promotores y el de detractores dentro de cada subgrupo.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="gtit">Limitaciones</h4>
+      <ul>
+        <li>Las etapas de back office quedan estructuralmente penalizadas: nadie elogia espontáneamente la cobranza, así que su numerador positivo tiende a cero.</li>
+        <li>Postventa descansa sobre 15 menciones. La señal es fuerte pero la base es chica.</li>
+        <li>19 respuestas presentan discrepancia entre calificación y comentario; se conservaron sin corregir.</li>
+        <li>Un solo mes de datos: no hay serie para distinguir un problema estructural de un evento puntual.</li>
+        <li>La encuesta llega al cliente que compró; no captura al que desistió antes de facturar.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="gtit">Cómo validar antes de decidir</h4>
+      <ul>
+        <li>Cruzar la cohorte de detractores de junio contra la facturación de los quince meses siguientes y medir su recompra real frente a la de los promotores.</li>
+        <li>Ese único cruce reemplaza los dos supuestos más sensibles del modelo por dato propio.</li>
+        <li>Repetir el análisis tres meses seguidos con la misma tematización antes de fijar metas.</li>
+        <li>Homologar el diccionario de categorías entre períodos: junio incorpora clases que no existían en el corte de enero a mayo.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<p class="note">Análisis elaborado sobre 1.099 respuestas de la encuesta de NPS de junio de 2026 y sobre los parámetros comerciales informados por el negocio. Las cifras de pérdida son estimaciones basadas en supuestos declarados, no proyecciones contables. Los comentarios citados se reproducen sin datos que permitan identificar al cliente. Los resultados describen procesos y no constituyen evaluación individual de personas.</p>
+</div>
+
+<script>
+const tabs=[...document.querySelectorAll('[role=tab]')];
+tabs.forEach((t,i)=>{
+  t.addEventListener('click',()=>{
+    tabs.forEach(x=>{x.setAttribute('aria-selected','false');document.getElementById(x.getAttribute('aria-controls')).hidden=true});
+    t.setAttribute('aria-selected','true');
+    document.getElementById(t.getAttribute('aria-controls')).hidden=false;
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+  t.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];n.focus();n.click()}
+  });
+});
+const c=v=>v>.18?"var(--teal)":v<-.18?"var(--coral)":"var(--soft)";
+
+/* curva por etapa */
+const y=v=>(1.05-v)/2.1*100;
+const bandas=[["Entusiasmo","+1 a +0.5",1.05,0.5,"rgba(14,124,107,.12)"],["Satisfacción","+0.5 a +0.2",0.5,0.2,"rgba(14,124,107,.055)"],["Neutro","+0.2 a −0.2",0.2,-0.2,"rgba(14,23,41,.04)"],["Fricción","−0.2 a −0.5",-0.2,-0.5,"rgba(226,84,76,.07)"],["Ruptura","−0.5 a −1",-0.5,-1.05,"rgba(226,84,76,.14)"]];
+document.getElementById("bands").innerHTML=bandas.map(b=>`
+<div class="band" style="top:${y(b[2])}%;height:${y(b[3])-y(b[2])}%"><span>${b[0]}<br>${b[1]}</span><i style="background:${b[4]}"></i></div>`).join("");
+const et=[["Asesoría y venta",0.86,484],["Trámite y crédito",0.68,256],["Producto y stock",0.66,70],["Entrega",-0.57,56],["Postventa",-0.87,15],["Cobranza",-1.00,87]];
+document.getElementById("stages").innerHTML=et.map(e=>`
+<div class="st"><div class="stem">
+ <span class="dot" style="top:${y(e[1])}%;background:${c(e[1])}"></span>
+ <span class="val" style="top:calc(${y(e[1])}% ${e[1]>=0?'- 28px':'+ 13px'});color:${c(e[1])}">${e[1]>0?"+":"−"}${Math.abs(e[1]).toFixed(2)}</span>
+</div><div class="lab">${e[0]}<b>n=${e[2]}</b></div></div>`).join("");
+
+/* nps por tema */
+const temas=[["Postventa",-36,14],["Atención y venta",15,34],["Entrega",32,44],["Stock",42,12],["Cobranza",46,87],["Otros",52,31],["Crédito y financ.",58,38]];
+const axN=`<div class="axis"><span></span><div class="axis-in">${[-100,-50,0,50,100].map(t=>`<span style="left:${(t+100)/2}%">${t>0?"+":""}${t}</span>`).join("")}</div><span></span></div>`;
+document.getElementById("npsbars").innerHTML=axN+temas.map(t=>{
+  const neg=t[1]<0,w=Math.abs(t[1])/2,col=neg?"var(--coral)":(t[1]<40?"var(--amber)":"var(--teal)");
+  return `<div class="bar-row"><span>${t[0]} <small style="color:var(--soft)">(${t[2]})</small></span>
+  <span class="npsbar"><i class="npsmid"></i><i class="npsfill" style="${neg?"right:50%":"left:50%"};width:0;background:${col}" data-w="${w}"></i></span>
+  <em style="color:${col}">${t[1]>0?"+":""}${t[1]}</em></div>`}).join("");
+
+/* volumen */
+const vol=[["Cobranza",87,"var(--coral)"],["Entrega",44,"var(--coral)"],["Crédito y financ.",38,"var(--amber)"],["Atención y venta",34,"var(--coral)"],["Otros",31,"var(--soft)"],["Postventa",14,"var(--coral)"],["Stock",12,"var(--amber)"]];
+const axV=`<div class="axis"><span></span><div class="axis-in">${[0,25,50,75,100].map(t=>`<span style="left:${t}%">${t}</span>`).join("")}</div><span></span></div>`;
+document.getElementById("volbars").innerHTML=axV+vol.map(v=>`
+<div class="bar-row"><span>${v[0]}</span>
+<span class="track">${[25,50,75].map(t=>`<i class="tick" style="left:${t}%"></i>`).join("")}<i class="fill" data-w="${v[1]}" style="background:${v[2]}"></i></span>
+<em style="color:${v[2]}">${v[1]}</em></div>`).join("");
+
+requestAnimationFrame(()=>{
+  document.querySelectorAll(".fill").forEach(f=>f.style.width=f.dataset.w+"%");
+  document.querySelectorAll(".npsfill").forEach(f=>f.style.width=f.dataset.w+"%");
+});
+</script>
+</body>
+</html>
