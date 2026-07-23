@@ -104,6 +104,26 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
 .score .big small{font-size:18px;opacity:.55;font-weight:500}
 .score .cap{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-top:8px}
 .score p{margin:0;opacity:.78;font-size:14px;max-width:62ch}
+/* SIMULADOR */
+.sim-grid{display:grid;gap:18px;margin-bottom:28px}
+.sim-row{display:grid;grid-template-columns:260px 1fr 62px;gap:16px;align-items:center}
+.sim-row label{font-size:13.5px}
+.slider-wrap{position:relative;padding:8px 0}
+.slider-wrap input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:var(--line);border-radius:99px;outline:none;cursor:pointer}
+.slider-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--ink);cursor:pointer;border:2px solid var(--card);box-shadow:0 1px 3px rgba(0,0,0,.25);position:relative;z-index:2}
+.slider-wrap input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--ink);cursor:pointer;border:2px solid var(--card);box-shadow:0 1px 3px rgba(0,0,0,.25);position:relative;z-index:2}
+.base-mark{position:absolute;top:50%;width:4px;height:18px;background:#fff;border:1px solid var(--soft);border-radius:2px;transform:translate(-50%,-50%);z-index:1;pointer-events:none}
+.sval{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;text-align:right;min-width:52px}
+.sim-result{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.sim-box{background:rgba(14,23,41,.04);border-radius:4px;padding:18px;text-align:center}
+.sim-box .n{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;line-height:1;letter-spacing:-.02em}
+.sim-box .l{font-size:11.5px;color:var(--soft);margin-top:6px;line-height:1.3}
+.sim-box.base{outline:2px solid var(--ink);outline-offset:-2px}
+.sim-box.changed{outline:2px solid var(--coral);outline-offset:-2px}
+.sim-delta{font-family:'IBM Plex Mono',monospace;font-size:11px;margin-top:5px}
+.sim-delta.up{color:var(--coral)}.sim-delta.dn{color:var(--teal)}.sim-delta.eq{color:var(--soft)}
+@media (max-width:760px){.sim-row{grid-template-columns:1fr 1fr 52px;gap:8px}.sim-row label{grid-column:1/-1}}
+
 .note{font-size:11.5px;color:var(--soft);margin-top:24px;line-height:1.6}
 @media (max-width:760px){
  .bar-row,.axis{grid-template-columns:104px 1fr 74px;gap:9px;font-size:12px}
@@ -135,6 +155,7 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
       <button role="tab" aria-selected="false" aria-controls="p4" id="t4">Cierre del ciclo</button>
       <button role="tab" aria-selected="false" aria-controls="p5" id="t5">Plan</button>
       <button role="tab" aria-selected="false" aria-controls="p6" id="t6">Metodología</button>
+      <button role="tab" aria-selected="false" aria-controls="p7" id="t7">Alerta CSAT</button>
     </nav>
   </div>
 </header>
@@ -163,6 +184,43 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
     <div class="mstep"><div class="t">Margen de contribución</div><div class="v">Gs. 292.730<small>millones · 31,8%</small></div><div class="d">299.653 facturaciones · Gs. 976.896 de margen por compra</div></div>
     <div class="mstep"><div class="t">Clientes perdidos al año</div><div class="v">12.301<small>4,1% de la base facturada</small></div><div class="d">Más 3.866 prospectos por boca a boca</div></div>
     <div class="mstep"><div class="t">Pérdida anual estimada</div><div class="v">Gs. 14.038<small>millones de margen</small></div><div class="d">Gs. 44.145 millones en ventas · 14.370 tickets</div></div>
+  </div>
+
+  <h3 class="sec">Sensibilizar los supuestos</h3>
+  <div class="card sim" style="margin-bottom:14px">
+    <p style="font-size:13.5px;color:var(--soft);margin:0 0 22px;max-width:82ch">Cada barra controla un supuesto del modelo. El marcador blanco indica el <b style="color:var(--ink)">caso base</b>. Deslice para ver cómo cambia la pérdida estimada. Los datos de la empresa (facturación, margen, proporciones NPS) están fijos; lo que se mueve son los supuestos de comportamiento.</p>
+
+    <div class="sim-grid">
+      <div class="sim-row">
+        <label for="s_fd">Fuga de detractores</label>
+        <div class="slider-wrap"><input type="range" id="s_fd" min="10" max="60" value="35" step="5"><span class="base-mark" style="left:calc((35 - 10) / (60 - 10) * 100%)"></span></div>
+        <span class="sval" id="v_fd">35%</span>
+      </div>
+      <div class="sim-row">
+        <label for="s_fp">Fuga de pasivos</label>
+        <div class="slider-wrap"><input type="range" id="s_fp" min="5" max="30" value="15" step="5"><span class="base-mark" style="left:calc((15 - 5) / (30 - 5) * 100%)"></span></div>
+        <span class="sval" id="v_fp">15%</span>
+      </div>
+      <div class="sim-row">
+        <label for="s_tell">Personas que escuchan al detractor</label>
+        <div class="slider-wrap"><input type="range" id="s_tell" min="0" max="5" value="2.5" step="0.5"><span class="base-mark" style="left:calc((2.5 - 0) / (5 - 0) * 100%)"></span></div>
+        <span class="sval" id="v_tell">2,5</span>
+      </div>
+      <div class="sim-row">
+        <label for="s_conv">Conversión perdida por boca a boca</label>
+        <div class="slider-wrap"><input type="range" id="s_conv" min="0" max="12" value="6" step="1"><span class="base-mark" style="left:calc((6 - 0) / (12 - 0) * 100%)"></span></div>
+        <span class="sval" id="v_conv">6%</span>
+      </div>
+      <div class="sim-row">
+        <label for="s_ciclo">Ciclo de recompra (meses)</label>
+        <div class="slider-wrap"><input type="range" id="s_ciclo" min="12" max="15" value="13.5" step="0.5"><span class="base-mark" style="left:calc((13.5 - 12) / (15 - 12) * 100%)"></span></div>
+        <span class="sval" id="v_ciclo">13,5</span>
+      </div>
+    </div>
+
+    <div class="sim-result" id="sim-result"></div>
+
+    <p class="foot" id="sim-foot"></p>
   </div>
 
   <h3 class="sec">Dónde se quiebra el recorrido</h3>
@@ -563,6 +621,105 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
   </div>
 </section>
 
+<!-- 7 ALERTA CSAT -->
+<section role="tabpanel" id="p7" aria-labelledby="t7" hidden>
+  <h2>Los promotores que ya tienen un pie afuera</h2>
+  <p class="lead">La encuesta de junio incluye dos preguntas de satisfacción puntual (CSAT, escala 1 a 5): atención del vendedor y entrega a tiempo. Son métricas distintas del NPS: miden la experiencia en esa compra específica, no la lealtad general. Al cruzarlas aparece un segmento que el NPS solo no muestra.</p>
+
+  <div class="card" style="margin-bottom:14px;border-left:4px solid var(--amber)">
+    <h4 class="gtit">50 promotores evaluaron mal un touchpoint</h4>
+    <p style="font-size:14px;margin:0 0 12px">Puntuaron 9 o 10 en NPS — recomendarían la empresa — pero dieron 3 o menos en entrega, en atención, o en ambos. Son el 5,4% de los promotores. No son detractores todavía, y por eso el modelo de pérdida no los captura. Pero ya tuvieron una experiencia operativa negativa, y si se repite en la próxima compra, la probabilidad de que bajen su NPS es mucho mayor que la del promotor promedio.</p>
+    <p style="font-size:14px;margin:0"><b>Son la señal más temprana de deterioro que tiene la encuesta.</b> Y a diferencia de muchos detractores sistémicos, son accionables: el CSAT identifica exactamente qué falló.</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi y"><div class="n">44</div><div class="l">Promotores con entrega ≤ 3<br>4,8% de los promotores</div></div>
+    <div class="kpi y"><div class="n">14</div><div class="l">Promotores con atención ≤ 3<br>1,5% de los promotores</div></div>
+    <div class="kpi r"><div class="n">50</div><div class="l">Con algún CSAT bajo<br>5,4% de los promotores</div></div>
+    <div class="kpi g"><div class="n">925</div><div class="l">Promotores totales<br>84,2% del lote</div></div>
+  </div>
+
+  <h3 class="sec">El cruce NPS × CSAT</h3>
+  <div class="card scroll" style="margin-bottom:14px">
+    <table>
+      <thead><tr><th></th><th colspan="2">CSAT Entrega</th><th colspan="2">CSAT Atención</th><th>Total</th></tr>
+      <tr><th></th><th>4–5 (bien)</th><th>1–3 (mal)</th><th>4–5 (bien)</th><th>1–3 (mal)</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><b>Promotores</b></td><td class="num">881</td><td class="num" style="color:var(--coral)"><b>44</b></td><td class="num">911</td><td class="num" style="color:var(--coral)"><b>14</b></td><td class="num">925</td></tr>
+        <tr><td>Pasivos</td><td class="num">65</td><td class="num">15</td><td class="num">74</td><td class="num">6</td><td class="num">80</td></tr>
+        <tr><td>Detractores</td><td class="num">43</td><td class="num">51</td><td class="num">47</td><td class="num">47</td><td class="num">94</td></tr>
+        <tr style="border-top:2px solid var(--line)"><td><b>Total</b></td><td class="num">989</td><td class="num"><b>110</b></td><td class="num">1.032</td><td class="num"><b>67</b></td><td class="num">1.099</td></tr>
+      </tbody>
+    </table>
+    <p class="foot">110 clientes evaluaron mal la entrega; de ellos, 44 son promotores. Eso significa que el 40% de las entregas problemáticas del mes afectaron a clientes que hoy son leales. Es fricción invisible para el NPS global.</p>
+  </div>
+
+  <h3 class="sec">Por qué no mezclar CSAT y NPS en un solo modelo</h3>
+  <div class="grid3" style="margin-bottom:14px">
+    <div class="card">
+      <h4 class="gtit">Miden cosas distintas</h4>
+      <ul>
+        <li><b>NPS</b> (0–10): "¿Recomendarías la empresa?" Mide lealtad general, integra todas las experiencias acumuladas.</li>
+        <li><b>CSAT</b> (1–5): "¿Cómo fue la entrega?" / "¿Cómo fue la atención?" Mide satisfacción con un touchpoint específico de esta compra.</li>
+        <li>Un cliente puede tener NPS alto y CSAT bajo: la lealtad acumulada aún absorbe la fricción puntual. Pero esa capacidad de absorción tiene un límite.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="gtit">Disparan acciones distintas</h4>
+      <ul>
+        <li><b>NPS bajo (detractor):</b> dispara rescate — el equipo de ATC revisa si es accionable y gestiona.</li>
+        <li><b>CSAT bajo en un promotor:</b> debería disparar una alerta preventiva, no un rescate. El cliente no está en crisis, pero una segunda mala entrega puede empujarlo a pasivo o detractor.</li>
+        <li>Mezclarlos en un solo tablero confunde dos escalas, dos preguntas y dos flujos de trabajo.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="gtit">Lo que sí aporta el cruce</h4>
+      <ul>
+        <li><b>Indicador adelantado:</b> los 50 promotores con CSAT bajo son los detractores potenciales de mañana. Monitorearlos mes a mes muestra si la fricción operativa se acumula antes de que el NPS lo refleje.</li>
+        <li><b>Accionabilidad:</b> a diferencia del detractor que escribe "no me gustó nada" sin detalle, el CSAT dice exactamente qué falló: entrega o atención.</li>
+        <li><b>Dimensionamiento:</b> si el 4,8% de promotores con entrega mala se convirtiera en detractor, la tasa de detractores subiría del 8,6% al 12,6% y la pérdida anual saltaría a Gs. 20.600 millones.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sec">Qué dicen estos 44 promotores</h3>
+  <div class="grid3" style="margin-bottom:14px">
+    <div class="card">
+      <h4 class="gtit">El patrón dominante: demora</h4>
+      <ul>
+        <li>15 de los 44 fueron categorizados como "Tiempo de entrega".</li>
+        <li>El reclamo es consistente: se compromete una fecha y no se cumple. No es que la entrega sea mala — es que la promesa no se sostiene.</li>
+        <li>Es el mismo problema que apareció en la auditoría de conversaciones y en el análisis de sentimiento por etapa.</li>
+      </ul>
+      <p class="q"><b>Promotor · NPS 10 · Entrega 1</b>"Que se entregue la mercadería después de semanas y la empresa quiere que se pague en el día las cuotas."</p>
+    </div>
+    <div class="card">
+      <h4 class="gtit">El dato más revelador</h4>
+      <ul>
+        <li>14 de los 44 fueron categorizados como "Comentario Positivo" — el comentario de texto es favorable, pero la evaluación numérica de entrega es 1, 2 o 3.</li>
+        <li>Eso significa que el sistema de categorías actual no los detecta. Solo el cruce numérico NPS × CSAT los encuentra.</li>
+        <li>Si se usa solo la categoría del comentario, estos 14 clientes son invisibles.</li>
+      </ul>
+      <p class="q"><b>Promotor · NPS 10 · Entrega 2</b>"Nada, que a veces no llegan tan a tiempo los productos."</p>
+    </div>
+    <div class="card">
+      <h4 class="gtit">La atención es menos crítica</h4>
+      <ul>
+        <li>Solo 14 promotores dieron atención ≤ 3, contra 44 en entrega.</li>
+        <li>7 de esos 14 también dieron entrega baja — el problema es convergente.</li>
+        <li>La media de atención del promotor es 4,92 sobre 5. No hay un problema de trato; hay un problema de cumplimiento.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sec">Recomendación</h3>
+  <div class="card">
+    <div class="act"><span class="w">Mensual</span><span class="t">Monitorear el % de promotores con CSAT de entrega ≤ 3</span><span class="i">Hoy es 4,8%. Si sube sostenidamente, el NPS va a bajar con un rezago de uno o dos trimestres. Es el indicador adelantado más preciso que tiene la encuesta.</span></div>
+    <div class="act"><span class="w">Inmediato</span><span class="t">No gestionar a estos 50 como detractores</span><span class="i">Son promotores. Llamarlos para "rescatarlos" es innecesario y puede resultar contraproducente. Lo que necesitan es que la próxima entrega funcione.</span></div>
+    <div class="act"><span class="w">60 días</span><span class="t">Incorporar el cruce NPS × CSAT al tablero mensual</span><span class="i">Es el único análisis que detecta la fricción antes de que el NPS la registre. Hoy no existe en ningún reporte recurrente.</span></div>
+  </div>
+</section>
+
 <p class="note">Análisis elaborado sobre 1.099 respuestas de la encuesta de NPS de junio de 2026 y sobre los parámetros comerciales informados por el negocio. Las cifras de pérdida son estimaciones basadas en supuestos declarados, no proyecciones contables. Los comentarios citados se reproducen sin datos que permitan identificar al cliente. Los resultados describen procesos y no constituyen evaluación individual de personas.</p>
 </div>
 
@@ -622,6 +779,43 @@ document.getElementById("volbars").innerHTML=axV+vol.map(v=>`
 <div class="bar-row"><span>${v[0]}</span>
 <span class="track">${[25,50,75].map(t=>`<i class="tick" style="left:${t}%"></i>`).join("")}<i class="fill" data-w="${v[1]}" style="background:${v[2]}"></i></span>
 <em style="color:${v[2]}">${v[1]}</em></div>`).join("");
+
+/* ---- simulador ---- */
+const SIM={nD:25770,nN:21875,mc:976896,BASE:{fd:.35,fp:.15,tell:2.5,conv:.06,ciclo:13.5}};
+const fmt=n=>n.toLocaleString('es-PY',{maximumFractionDigits:0});
+function runSim(){
+  const fd=+document.getElementById('s_fd').value/100;
+  const fp=+document.getElementById('s_fp').value/100;
+  const tell=+document.getElementById('s_tell').value;
+  const conv=+document.getElementById('s_conv').value/100;
+  const ciclo=+document.getElementById('s_ciclo').value;
+  document.getElementById('v_fd').textContent=Math.round(fd*100)+'%';
+  document.getElementById('v_fp').textContent=Math.round(fp*100)+'%';
+  document.getElementById('v_tell').textContent=tell.toFixed(1).replace('.',',');
+  document.getElementById('v_conv').textContent=Math.round(conv*100)+'%';
+  document.getElementById('v_ciclo').textContent=ciclo.toFixed(1).replace('.',',');
+  const cpa=12/ciclo, val=SIM.mc*cpa;
+  const clD=SIM.nD*fd, clN=SIM.nN*fp, wom=SIM.nD*tell*conv;
+  const tot=clD+clN+wom, loss=tot*val;
+  const bD=SIM.nD*SIM.BASE.fd, bN=SIM.nN*SIM.BASE.fp, bW=SIM.nD*SIM.BASE.tell*SIM.BASE.conv;
+  const bTot=bD+bN+bW, bVal=SIM.mc*(12/SIM.BASE.ciclo), bLoss=bTot*bVal;
+  const diff=loss-bLoss, pct=diff/bLoss*100;
+  const isBase=Math.abs(diff)<1e4;
+  const cls=isBase?'base':'changed';
+  const sign=diff>0?'+':''; const dcls=diff>1e4?'up':diff<-1e4?'dn':'eq';
+  const delta=isBase?'<span class="sim-delta eq">= caso base</span>'
+    :`<span class="sim-delta ${dcls}">${sign}${fmt(Math.round(diff/1e6))} M (${sign}${pct.toFixed(1)}%)</span>`;
+  document.getElementById('sim-result').innerHTML=`
+    <div class="sim-box ${cls}"><div class="n">${fmt(Math.round(clD))}</div><div class="l">Detractores que se van</div></div>
+    <div class="sim-box ${cls}"><div class="n">${fmt(Math.round(clN))}</div><div class="l">Pasivos que se van</div></div>
+    <div class="sim-box ${cls}"><div class="n">${fmt(Math.round(wom))}</div><div class="l">Prospectos perdidos<br>por boca a boca</div></div>
+    <div class="sim-box ${cls}"><div class="n">${fmt(Math.round(tot))}</div><div class="l">Total clientes perdidos</div></div>
+    <div class="sim-box ${cls}"><div class="n">Gs. ${fmt(Math.round(loss/1e6))} M</div><div class="l">Margen anual en riesgo</div>${delta}</div>
+    <div class="sim-box ${cls}"><div class="n">Gs. ${fmt(Math.round(loss/SIM.mc*SIM.mc/0.318/1e6))} M</div><div class="l">Ventas equivalentes</div></div>`;
+  document.getElementById('sim-foot').innerHTML=`<b>Cadena:</b> ${fmt(SIM.nD)} detractores × ${Math.round(fd*100)}% fuga = ${fmt(Math.round(clD))} &nbsp;+&nbsp; ${fmt(SIM.nN)} pasivos × ${Math.round(fp*100)}% = ${fmt(Math.round(clN))} &nbsp;+&nbsp; boca a boca ${fmt(Math.round(wom))} &nbsp;=&nbsp; ${fmt(Math.round(tot))} clientes &nbsp;×&nbsp; Gs. ${fmt(SIM.mc)} margen/compra &nbsp;×&nbsp; ${cpa.toFixed(3).replace('.',',')} compras/año &nbsp;=&nbsp; <b>Gs. ${fmt(Math.round(loss/1e6))} millones</b>. Caso base: Gs. ${fmt(Math.round(bLoss/1e6))} M.`;
+}
+['s_fd','s_fp','s_tell','s_conv','s_ciclo'].forEach(id=>document.getElementById(id).addEventListener('input',runSim));
+runSim();
 
 requestAnimationFrame(()=>{
   document.querySelectorAll(".fill").forEach(f=>f.style.width=f.dataset.w+"%");
