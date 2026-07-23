@@ -73,6 +73,8 @@ h3.sec{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em
 .npsbar{position:relative;height:22px;background:rgba(14,23,41,.05);border:1px solid var(--line);border-radius:3px}
 .npsmid{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--ink);opacity:.35}
 .npsfill{position:absolute;top:0;bottom:0;transition:width 1s cubic-bezier(.22,1,.36,1)}
+.npsglob{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);z-index:2}
+.bar-row em b{font-family:'IBM Plex Mono',monospace}
 table{width:100%;border-collapse:collapse;font-size:13.5px}
 th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid var(--line);padding:0 10px 10px 0;font-weight:400}
 td{padding:11px 10px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}
@@ -111,7 +113,7 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
   <div class="top-in">
     <p class="eyebrow">Experiencia del Cliente y Calidad Comercial · Impacto anual</p>
     <h1>Qué cuesta al año no gestionar la experiencia del cliente</h1>
-    <p class="sub">Análisis de sentimiento sobre 1.099 comentarios de NPS de junio 2026, proyectado a doce meses · 26.799 clientes facturados por mes · ticket promedio Gs. 3.072.000 · margen de contribución 31,8% · ciclo de recompra de 12 a 15 meses</p>
+    <p class="sub">Análisis de sentimiento sobre 1.099 comentarios de NPS de junio 2026, proyectado a doce meses · Junio 2026: 26.762 clientes, Gs. 76.927 millones facturados · Proyección anual sobre la facturación estimada 2026 del canal minorista, Gs. 920.534 millones · ticket promedio anual Gs. 3.072.000 · margen 31,8% · ciclo de recompra de 12 a 15 meses</p>
     <nav role="tablist">
       <button role="tab" aria-selected="true" aria-controls="p1" id="t1">Resumen</button>
       <button role="tab" aria-selected="false" aria-controls="p2" id="t2">Sentimiento</button>
@@ -128,25 +130,25 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
 <!-- 1 RESUMEN -->
 <section role="tabpanel" id="p1" aria-labelledby="t1">
   <div class="thesis">
-    <p>Un NPS de +76 que cuesta <span>Gs. 15 mil millones al año</span>.</p>
+    <p>Un NPS de +76 que cuesta <span>Gs. 14.038 millones al año</span>.</p>
     <p class="d">El indicador global es excelente. Debajo, el recorrido del cliente se quiebra después de la venta: entrega, postventa y cobranza concentran toda la insatisfacción. Con un ciclo de recompra de 12 a 15 meses, el cliente que se va no vuelve a aparecer hasta dentro de más de un año, y para entonces ya compró en otro lado.</p>
   </div>
 
   <div class="kpis">
     <div class="kpi g"><div class="n">+75,6</div><div class="l">NPS de junio<br>1.099 respuestas</div></div>
-    <div class="kpi r"><div class="n">−1,00</div><div class="l">Polaridad de cobranza<br>ningún elogio en 1.099</div></div>
+    <div class="kpi r"><div class="n">−1,00</div><div class="l">Polaridad de cobranza<br>ningún elogio en junio</div></div>
     <div class="kpi r"><div class="n">75,5<small>%</small></div><div class="l">Detractores nunca contactados</div></div>
     <div class="kpi g"><div class="n">54,2<small>%</small></div><div class="l">Recuperación cuando sí se gestiona</div></div>
-    <div class="kpi r"><div class="n">13.201</div><div class="l">Clientes perdidos por año</div></div>
-    <div class="kpi r"><div class="n">15,1<small> mil M</small></div><div class="l">Margen anual en riesgo (Gs.)</div></div>
+    <div class="kpi r"><div class="n">12.301</div><div class="l">Clientes perdidos por año</div></div>
+    <div class="kpi r"><div class="n">14.038<small> M</small></div><div class="l">Margen anual en riesgo (Gs.)</div></div>
   </div>
 
   <h3 class="sec">De la insatisfacción al dinero · escala anual</h3>
   <div class="money">
-    <div class="mstep"><div class="t">Facturación anual</div><div class="v">Gs. 988<small>mil millones · 321.588 facturaciones</small></div><div class="d">26.799 clientes por mes × 12</div></div>
-    <div class="mstep"><div class="t">Margen de contribución</div><div class="v">Gs. 314<small>mil millones · 31,8%</small></div><div class="d">Gs. 976.896 de margen por compra</div></div>
-    <div class="mstep"><div class="t">Clientes perdidos al año</div><div class="v">13.201<small>4,1% de la base facturada</small></div><div class="d">Más 4.148 prospectos por boca a boca</div></div>
-    <div class="mstep"><div class="t">Pérdida anual estimada</div><div class="v">Gs. 15,1<small>mil millones de margen</small></div><div class="d">Gs. 47,4 mil millones en ventas · 15.422 tickets</div></div>
+    <div class="mstep"><div class="t">Facturación anual 2026</div><div class="v">Gs. 920.534<small>millones · +10,4% sobre 2025</small></div><div class="d">Estimación del canal minorista</div></div>
+    <div class="mstep"><div class="t">Margen de contribución</div><div class="v">Gs. 292.730<small>millones · 31,8%</small></div><div class="d">299.653 facturaciones · Gs. 976.896 de margen por compra</div></div>
+    <div class="mstep"><div class="t">Clientes perdidos al año</div><div class="v">12.301<small>4,1% de la base facturada</small></div><div class="d">Más 3.866 prospectos por boca a boca</div></div>
+    <div class="mstep"><div class="t">Pérdida anual estimada</div><div class="v">Gs. 14.038<small>millones de margen</small></div><div class="d">Gs. 44.145 millones en ventas · 14.370 tickets</div></div>
   </div>
 
   <h3 class="sec">Dónde se quiebra el recorrido</h3>
@@ -160,30 +162,30 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
   <div class="grid3">
     <div class="card" style="border-left:3px solid var(--coral)">
       <h4 class="gtit">Cobranza: ni un solo elogio</h4>
-      <p style="font-size:13.5px;color:var(--soft);margin:0 0 14px">En 1.099 encuestas ningún cliente mencionó la cobranza entre lo que más le gustó, y 87 la mencionaron entre lo que menos. Es la etapa con más contacto a lo largo del año y la única sin un solo comentario favorable. El patrón no es el moroso: es el cliente al día recibiendo llamadas antes del vencimiento.</p>
-      <p class="q"><b>Detractor · NPS 5</b>"Yo nunca me atraso con mis cuotas y de igual manera me mandan mensajes para pagar."</p>
+      <p style="font-size:13.5px;color:var(--soft);margin:0 0 14px">En las 1.099 encuestas de junio ningún cliente mencionó la cobranza entre lo que más le gustó, y 87 la mencionaron entre lo que menos. Fue la única etapa del mes sin un solo comentario favorable, y es además la que más contacto sostiene con el cliente entre una compra y la siguiente. El patrón no es el moroso: es el cliente al día recibiendo llamadas antes del vencimiento.</p>
+      <p class="q"><b>Cliente detractor · puntuó 5 de 10</b>"Yo nunca me atraso con mis cuotas y de igual manera me mandan mensajes para pagar."</p>
     </div>
     <div class="card" style="border-left:3px solid var(--coral)">
       <h4 class="gtit">Postventa: el peor ratio del recorrido</h4>
       <p style="font-size:13.5px;color:var(--soft);margin:0 0 14px">Un elogio contra catorce quejas. Instalaciones que no llegan, garantías invocadas sin respuesta, armados incompletos. Es el único tema del mes con NPS negativo, en −36.</p>
-      <p class="q"><b>Detractor · NPS 0</b>"No cumplen con lo pactado. No me instalaron mi aire. Crean problemas. Decepción total."</p>
+      <p class="q"><b>Cliente detractor · puntuó 0 de 10</b>"No cumplen con lo pactado. No me instalaron mi aire. Crean problemas. Decepción total."</p>
     </div>
     <div class="card" style="border-left:3px solid var(--teal)">
       <h4 class="gtit">La venta no es el problema</h4>
       <p style="font-size:13.5px;color:var(--soft);margin:0 0 14px">Asesoría y venta marca +0,86 con 484 menciones: es el activo más sólido de la compañía y el mejor puntaje de todo el recorrido. El diagnóstico no dice que se atienda mal, dice que se atiende muy bien y después no se entrega lo prometido.</p>
-      <p class="q" style="border-left-color:var(--teal)"><b style="color:var(--teal)">Promotor · NPS 10</b>"Calidez humana en la atención al cliente por parte de los funcionarios. Excelente."</p>
+      <p class="q" style="border-left-color:var(--teal)"><b style="color:var(--teal)">Cliente promotor · puntuó 10 de 10</b>"Calidez humana en la atención al cliente por parte de los funcionarios. Excelente."</p>
     </div>
   </div>
 
   <div class="score">
-    <div><div class="big">Gs. 2,5<small> mil M</small></div><div class="cap">Recuperable por año</div></div>
-    <p>Es lo que se protege pasando de contactar al 25% de los detractores, como hoy, a contactar al 80%, aplicando la tasa de recuperación que el propio equipo ya demuestra. Unos Gs. 207 millones de margen por mes. No requiere inversión en producto ni en precio: requiere llamar a quien ya levantó la mano.</p>
+    <div><div class="big">Gs. 2.314<small> M</small></div><div class="cap">Recuperable por año</div></div>
+    <p>Es lo que se protege pasando de contactar al 25% de los detractores, como hoy, a contactar al 80%, aplicando la tasa de recuperación que el propio equipo ya demuestra. Unos Gs. 193 millones de margen por mes. No requiere inversión en producto ni en precio: requiere llamar a quien ya levantó la mano.</p>
   </div>
 </section>
 
 <!-- 2 SENTIMIENTO -->
 <section role="tabpanel" id="p2" aria-labelledby="t2" hidden>
-  <h2>Análisis de sentimiento</h2>
+  <h2>Análisis de sentimiento · junio 2026</h2>
   <p class="lead">Dos lecturas complementarias. La primera mide la polaridad de cada etapa del recorrido contraponiendo elogios y quejas. La segunda mide el NPS de quienes comentaron cada tema, que revela qué tan tóxico es cada motivo para la lealtad.</p>
 
   <div class="card" style="margin-bottom:14px">
@@ -203,9 +205,16 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
   </div>
 
   <div class="card" style="margin-bottom:14px">
-    <h4 class="gtit">NPS de quienes comentaron cada tema · escala −100 a +100</h4>
+    <h4 class="gtit">NPS de quienes comentaron cada tema, contra el promedio de la compañía</h4>
+    <p style="font-size:13.5px;color:var(--soft);margin:0 0 20px;max-width:80ch">Esta métrica mide la lealtad de <b style="color:var(--ink)">la persona</b> que mencionó el tema, no la calidad de la etapa. Debe leerse contra el NPS global de <b style="color:var(--ink)">+75,6</b>, marcado con la línea vertical: un tema con +46 no es bueno, está 30 puntos por debajo del promedio.</p>
     <div id="npsbars"></div>
-    <p class="foot">Un tema puede tener pocas menciones y aun así ser crítico: postventa reúne 14 comentarios pero 8 son de detractores.</p>
+    <p class="foot">Ningún tema alcanza el promedio de la compañía. Un tema puede tener pocas menciones y aun así ser crítico: postventa reúne 14 comentarios pero 8 son de detractores.</p>
+  </div>
+
+  <div class="card" style="margin-bottom:14px;border-left:3px solid var(--violet)">
+    <h4 class="gtit">Las dos métricas no se contradicen</h4>
+    <p style="font-size:14px;margin:0 0 12px">Cobranza tiene polaridad <b>−1,00</b> y NPS de tema <b>+46</b>. Parece incoherente y no lo es: son preguntas distintas. La polaridad mide <b>cómo se habla de la etapa</b> — nadie la elogia, 87 la critican. El NPS de tema mide <b>quién habla</b> — de esos 87, 55 siguen siendo promotores.</p>
+    <p style="font-size:14px;margin:0">Juntas dicen algo más preciso que cualquiera por separado: <b>la cobranza irrita a clientes que todavía son leales</b>. La queja es universal pero el daño aún no se consolidó en pérdida de recomendación. Es una alerta temprana, no una buena noticia, y es exactamente la condición en la que una corrección todavía rinde.</p>
   </div>
 
   <div class="card" style="margin-bottom:14px">
@@ -274,19 +283,36 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
 <!-- 3 PERDIDA ANUAL -->
 <section role="tabpanel" id="p3" aria-labelledby="t3" hidden>
   <h2>Estimación de la pérdida anual</h2>
-  <p class="lead">El modelo proyecta las doce cohortes mensuales del año. Estima cuántos clientes no volverán a comprar por encima de la tasa natural de un cliente satisfecho, y valoriza esa diferencia al margen de contribución, ajustada por el ciclo real de recompra.</p>
+  <p class="lead">El modelo parte de las proporciones de la encuesta de junio y las aplica a la facturación estimada del canal minorista para 2026. Estima cuántos clientes no volverán a comprar por encima de la tasa natural de un cliente satisfecho, y valoriza esa diferencia al margen de contribución, ajustada por el ciclo real de recompra.</p>
+
+  <h3 class="sec">Base de cálculo</h3>
+  <div class="card scroll" style="margin-bottom:14px">
+    <table>
+      <thead><tr><th>Concepto</th><th>Junio 2026</th><th>Año 2026 (estimado)</th><th>Origen</th></tr></thead>
+      <tbody>
+        <tr><td>Clientes facturados</td><td class="num">26.762</td><td class="num">299.653</td><td>Junio: dato real. Año: facturación ÷ ticket anual</td></tr>
+        <tr><td>Facturación</td><td class="num">Gs. 76.927 M</td><td class="num">Gs. 920.534 M</td><td>Estimación 2026 del canal minorista, +10,4% sobre 2025</td></tr>
+        <tr><td>Ticket promedio</td><td class="num">Gs. 2.874.487</td><td class="num">Gs. 3.072.000</td><td>Junio es mes bajo; el ticket anual recoge la estacionalidad de mayo y diciembre</td></tr>
+        <tr><td>Margen de contribución</td><td class="num">Gs. 24.463 M</td><td class="num">Gs. 292.730 M</td><td>31,8% sobre facturación</td></tr>
+        <tr><td>Margen por compra</td><td class="num">Gs. 914.087</td><td class="num">Gs. 976.896</td><td>Ticket × margen</td></tr>
+        <tr><td>Detractores extrapolados</td><td class="num">2.302</td><td class="num">25.770</td><td>8,6% de la base, según la encuesta de junio</td></tr>
+        <tr><td>Pasivos extrapolados</td><td class="num">1.954</td><td class="num">21.875</td><td>7,3% de la base</td></tr>
+      </tbody>
+    </table>
+    <p class="foot">La proyección anual no multiplica junio por doce. Junio es un mes de temporada baja, con un ticket 6,4% por debajo del promedio del año, y hacerlo subestimaría la pérdida. Se usa en cambio la facturación estimada del canal minorista para 2026 y el ticket promedio anual, que ya incorporan los picos de mayo y diciembre.</p>
+  </div>
 
   <h3 class="sec">El ciclo de recompra cambia la aritmética</h3>
   <div class="card" style="margin-bottom:14px">
     <div class="scroll"><table>
-      <thead><tr><th>Ciclo de recompra</th><th>Compras por año</th><th>Valor anual del cliente</th><th>Efecto sobre la pérdida</th></tr></thead>
+      <thead><tr><th>Ciclo de recompra</th><th>Compras por año</th><th>Valor anual del cliente</th><th>Pérdida anual base</th></tr></thead>
       <tbody>
-        <tr><td>12 meses</td><td class="num">1,00</td><td class="num">Gs. 976.896</td><td>Escenario máximo</td></tr>
-        <tr style="background:rgba(91,75,158,.05)"><td><b>13,5 meses (referencia)</b></td><td class="num"><b>0,89</b></td><td class="num"><b>Gs. 868.352</b></td><td>Punto medio del rango informado</td></tr>
-        <tr><td>15 meses</td><td class="num">0,80</td><td class="num">Gs. 781.517</td><td>Escenario mínimo, −20% sobre 12 meses</td></tr>
+        <tr><td>12 meses</td><td class="num">1,000</td><td class="num">Gs. 976.896</td><td class="num">Gs. 15.793 M</td></tr>
+        <tr style="background:rgba(91,75,158,.05)"><td><b>13,5 meses (referencia)</b></td><td class="num"><b>0,889</b></td><td class="num"><b>Gs. 868.352</b></td><td class="num"><b>Gs. 14.038 M</b></td></tr>
+        <tr><td>15 meses</td><td class="num">0,800</td><td class="num">Gs. 781.517</td><td class="num">Gs. 12.634 M</td></tr>
       </tbody>
     </table></div>
-    <p class="foot">Con un ciclo superior a doce meses, un mismo cliente prácticamente no se repite dentro del año calendario. Eso permite sumar las doce cohortes mensuales sin doble conteo: 321.588 facturaciones al año corresponden, en la práctica, a clientes distintos. Y tiene una implicancia operativa importante: el cliente insatisfecho de junio no vuelve a aparecer hasta mediados de 2027, cuando ya es tarde para recuperarlo.</p>
+    <p class="foot">Con un ciclo superior a doce meses, un mismo cliente prácticamente no se repite dentro del año calendario. Eso permite tratar las 299.653 facturaciones anuales como clientes distintos, sin doble conteo. Y tiene una implicancia operativa: el cliente insatisfecho de junio no vuelve a aparecer hasta mediados de 2027, cuando ya es tarde para recuperarlo. El rango de 12 a 15 meses mueve el resultado en ±11%.</p>
   </div>
 
   <h3 class="sec">Escenarios anuales</h3>
@@ -294,9 +320,9 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
     <table>
       <thead><tr><th>Escenario</th><th>Fuga pasivos</th><th>Fuga detractores</th><th>Clientes perdidos</th><th>Margen perdido</th><th>Ventas equivalentes</th><th>% margen anual</th></tr></thead>
       <tbody>
-        <tr><td><b>Conservador</b></td><td class="num">+8 pp</td><td class="num">+20 pp</td><td class="num">7.409</td><td class="num">Gs. 8,4 mil M</td><td class="num">Gs. 26,3 mil M</td><td class="num">2,7%</td></tr>
-        <tr style="background:rgba(226,84,76,.06)"><td><b>Base</b></td><td class="num">+15 pp</td><td class="num">+35 pp</td><td class="num">13.201</td><td class="num"><b>Gs. 15,1 mil M</b></td><td class="num"><b>Gs. 47,4 mil M</b></td><td class="num"><b>4,8%</b></td></tr>
-        <tr><td><b>Severo</b></td><td class="num">+22 pp</td><td class="num">+50 pp</td><td class="num">18.993</td><td class="num">Gs. 22,3 mil M</td><td class="num">Gs. 70,0 mil M</td><td class="num">7,1%</td></tr>
+        <tr><td><b>Conservador</b></td><td class="num">+8 pp</td><td class="num">+20 pp</td><td class="num">6.904</td><td class="num">Gs. 7.785 M</td><td class="num">Gs. 24.482 M</td><td class="num">2,7%</td></tr>
+        <tr style="background:rgba(226,84,76,.06)"><td><b>Base</b></td><td class="num">+15 pp</td><td class="num">+35 pp</td><td class="num">12.301</td><td class="num"><b>Gs. 14.038 M</b></td><td class="num"><b>Gs. 44.145 M</b></td><td class="num"><b>4,8%</b></td></tr>
+        <tr><td><b>Severo</b></td><td class="num">+22 pp</td><td class="num">+50 pp</td><td class="num">17.698</td><td class="num">Gs. 20.738 M</td><td class="num">Gs. 65.215 M</td><td class="num">7,1%</td></tr>
       </tbody>
     </table>
     <p class="foot">La fuga se expresa en puntos porcentuales <b>por encima</b> de la tasa natural de no recompra de un promotor, de modo que el modelo aísla el efecto atribuible a la mala experiencia y no la rotación normal del negocio. Cada escenario incluye la pérdida por boca a boca negativo, calculada sobre el número de personas a las que un detractor comenta su experiencia y la proporción de ellas que habría comprado.</p>
@@ -307,17 +333,17 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
     <div class="card" style="border-left:3px solid var(--coral)">
       <h4 class="gtit">Composición de la pérdida</h4>
       <ul>
-        <li><b>13.201 clientes perdidos al año.</b> 1.100 por mes: 293 pasivos y 807 detractores que no vuelven.</li>
-        <li><b>4.148 prospectos no captados</b> por boca a boca negativo.</li>
+        <li><b>12.301 clientes perdidos al año:</b> 3.281 pasivos y 9.020 detractores que no vuelven.</li>
+        <li><b>3.866 prospectos no captados</b> por boca a boca negativo.</li>
         <li>Valorizados a Gs. 868.352 de margen anual por cliente, según el ciclo de 13,5 meses.</li>
-        <li><b>Total: Gs. 15,1 mil millones de margen</b>, equivalentes a Gs. 47,4 mil millones de facturación o 15.422 tickets promedio.</li>
+        <li><b>Total: Gs. 14.038 millones de margen</b>, equivalentes a Gs. 44.145 millones de facturación o 14.370 tickets promedio.</li>
       </ul>
     </div>
     <div class="card" style="border-left:3px solid var(--amber)">
       <h4 class="gtit">Si se mide la relación completa</h4>
       <ul>
         <li>El modelo base valoriza solo la próxima compra que el cliente no hará.</li>
-        <li>Un cliente perdido no vuelve nunca, no una vez. A dos años la pérdida asciende a <b>Gs. 30,1 mil millones</b>; a tres años, a <b>Gs. 45,2 mil millones</b>.</li>
+        <li>Un cliente perdido no vuelve nunca, no una vez. A dos años la pérdida asciende a <b>Gs. 28.076 millones</b>; a tres años, a <b>Gs. 42.114 millones</b>.</li>
         <li>Esa es la cifra relevante para decidir una inversión estructural en logística o en postventa, cuyo retorno también se extiende en el tiempo.</li>
         <li>Para el presupuesto del ejercicio, la referencia sigue siendo la cifra a doce meses.</li>
       </ul>
@@ -325,10 +351,10 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
     <div class="card" style="border-left:3px solid var(--teal)">
       <h4 class="gtit">Cuánto es recuperable</h4>
       <ul>
-        <li>27.657 detractores al año, de los cuales hoy se contacta al 25,5%.</li>
-        <li>Con la tasa de éxito observada del 54,2%, llevar la cobertura al 80% rescata <b>8.169 detractores por año</b>.</li>
-        <li>Margen protegido: <b>Gs. 2,5 mil millones al año</b>, unos Gs. 207 millones por mes.</li>
-        <li>Es el 16% de la pérdida estimada, obtenido sin invertir en precio, producto ni publicidad.</li>
+        <li>25.770 detractores al año, de los cuales hoy se contacta al 25,5%.</li>
+        <li>Con la tasa de éxito observada del 54,2%, llevar la cobertura al 80% rescata <b>7.612 detractores por año</b>.</li>
+        <li>Margen protegido: <b>Gs. 2.314 millones al año</b>, unos Gs. 193 millones por mes.</li>
+        <li>Es el 16,5% de la pérdida estimada, obtenido sin invertir en precio, producto ni publicidad.</li>
       </ul>
     </div>
   </div>
@@ -345,7 +371,7 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
         <li>No incluye el efecto sobre el ticket. Un cliente insatisfecho que vuelve suele comprar menos, no solo menos veces.</li>
       </ul>
       <ul>
-        <li>El componente de boca a boca es el más frágil del modelo. El escenario conservador lo reduce a la mitad y aun así la pérdida supera los Gs. 8 mil millones.</li>
+        <li>El componente de boca a boca es el más frágil del modelo. El escenario conservador lo reduce a la mitad y aun así la pérdida supera los Gs. 7.700 millones.</li>
         <li>Ninguno de estos efectos está incluido, y todos empujan en la misma dirección.</li>
       </ul>
     </div>
@@ -409,7 +435,7 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
   <p class="lead">Ordenado por retorno sobre el margen en riesgo. Las primeras acciones no requieren inversión: son cambios de proceso sobre capacidades que la organización ya tiene.</p>
   <div class="card">
     <div class="act"><span class="w">Inmediato</span><span class="t">Contactar a los 71 detractores no gestionados de junio</span><span class="i">Con la tasa de recuperación observada del 54%, es la acción de mayor retorno inmediato disponible.</span></div>
-    <div class="act"><span class="w">30 días</span><span class="t">Meta de cobertura del 80% de detractores, con contacto dentro de las 48 horas</span><span class="i">Protege del orden de Gs. 2,5 mil millones al año. Requiere asignación nominal de responsable por caso.</span></div>
+    <div class="act"><span class="w">30 días</span><span class="t">Meta de cobertura del 80% de detractores, con contacto dentro de las 48 horas</span><span class="i">Protege del orden de Gs. 2.314 millones al año. Requiere asignación nominal de responsable por caso.</span></div>
     <div class="act"><span class="w">30 días</span><span class="t">Desagregar el estado «no accionable» en causas explícitas</span><span class="i">Sin esto, el 75,5% de los casos no es interpretable y la cobertura no se puede medir.</span></div>
     <div class="act"><span class="w">30 días</span><span class="t">Suspender el contacto de cobranza previo al vencimiento para clientes sin historial de mora</span><span class="i">87 menciones y polaridad −1,00. Mayor tema de fricción del recorrido, aplicado sobre la mejor cartera. Costo de corrección: cero.</span></div>
     <div class="act"><span class="w">60 días</span><span class="t">Conciliación de pagos en línea antes de disparar el recordatorio</span><span class="i">Elimina los mensajes de cobro a clientes que ya pagaron, la falla que más irrita al cliente cumplidor.</span></div>
@@ -426,15 +452,24 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
   <h2>Metodología y supuestos</h2>
   <p class="lead">Toda estimación de pérdida descansa en supuestos. Los que siguen están explicitados para que el comité pueda discutirlos y reemplazarlos por datos propios cuando estén disponibles.</p>
 
+  <h3 class="sec">Las tres métricas del informe, y por qué no son lo mismo</h3>
+  <div class="card" style="margin-bottom:14px">
+    <div class="act"><span class="w">Individual</span><span class="t">Puntuación del cliente, de 0 a 10</span><span class="i">Es la respuesta directa a la pregunta de recomendación. De 9 a 10 promotor, 7 u 8 pasivo, de 0 a 6 detractor. Es lo que aparece junto a cada cita textual.</span></div>
+    <div class="act"><span class="w">Por tema</span><span class="t">NPS del tema = % promotores − % detractores entre quienes lo mencionaron</span><span class="i">Mide la lealtad de la persona, no la calidad de la etapa. Se lee contra el NPS global de +75,6, nunca contra cero: cobranza en +46 está 30 puntos por debajo del promedio de la compañía.</span></div>
+    <div class="act"><span class="w">Por etapa</span><span class="t">Polaridad = (elogios − quejas) ÷ menciones totales</span><span class="i">Mide cómo se habla de la etapa, con independencia de quién lo diga. Escala de −1 a +1, comparable con la curva de la auditoría de conversaciones.</span></div>
+    <div class="act"><span class="w">Global</span><span class="t">NPS de junio = 84,2% − 8,6% = +75,6</span><span class="i">925 promotores y 94 detractores sobre 1.099 respuestas. Los 80 pasivos cuentan en el denominador pero no en el numerador, según la fórmula estándar.</span></div>
+    <p class="foot">Un mismo tema puede tener polaridad muy negativa y NPS de tema positivo. No es una inconsistencia: significa que la etapa genera queja universal en clientes que todavía recomiendan la empresa. Es la señal más accionable que produce este análisis, porque identifica daño reversible.</p>
+  </div>
+
   <h3 class="sec">Supuestos del modelo económico</h3>
   <div class="card" style="margin-bottom:14px">
-    <div class="act"><span class="w">Dato</span><span class="t">Ciclo de recompra de 12 a 15 meses</span><span class="i">Aportado por el negocio. Se usa 13,5 meses como punto medio, equivalente a 0,89 compras por cliente y por año. Los escenarios de 12 y 15 meses mueven la pérdida en ±11%.</span></div>
+    <div class="act"><span class="w">Dato</span><span class="t">Ciclo de recompra de 12 a 15 meses</span><span class="i">Aportado por el negocio. Se usa 13,5 meses como punto medio, equivalente a 0,889 compras por cliente y por año. Los escenarios de 12 y 15 meses mueven la pérdida entre Gs. 12.634 y 15.793 millones.</span></div>
     <div class="act"><span class="w">Supuesto</span><span class="t">Fuga incremental de detractores: +35 pp sobre la base</span><span class="i">Rango de literatura de gestión de clientes. Debe reemplazarse por la tasa real de recompra a 15 meses de la propia cartera, que el sistema comercial ya permite calcular.</span></div>
     <div class="act"><span class="w">Supuesto</span><span class="t">Fuga incremental de pasivos: +15 pp</span><span class="i">Mismo criterio. El pasivo es más recuperable que el detractor pero no es indiferente.</span></div>
-    <div class="act"><span class="w">Supuesto</span><span class="t">Doce cohortes mensuales sin solapamiento</span><span class="i">Válido porque el ciclo de recompra supera los doce meses: un cliente no se repite dentro del año calendario. Si el ciclo real fuera menor a doce meses, habría doble conteo y la cifra bajaría.</span></div>
-    <div class="act"><span class="w">Supuesto</span><span class="t">Boca a boca: 2,5 personas por detractor, 6% de conversión perdida</span><span class="i">El componente más frágil del modelo. El escenario conservador lo reduce a la mitad y aun así la pérdida supera los Gs. 8 mil millones.</span></div>
-    <div class="act"><span class="w">Supuesto</span><span class="t">La muestra representa a la base facturada</span><span class="i">1.099 respuestas sobre 26.799 clientes. Con 4,1% de tasa de respuesta y sesgo probable hacia el cliente satisfecho, la proporción de detractores es más un piso que un techo.</span></div>
-    <div class="act"><span class="w">Supuesto</span><span class="t">Margen de contribución y ticket constantes</span><span class="i">Se aplica el 31,8% y los Gs. 3.072.000 informados, uniformes por categoría. Un mix distinto entre clientes que se van y los que se quedan alteraría el resultado.</span></div>
+    <div class="act"><span class="w">Supuesto</span><span class="t">Las 299.653 facturaciones del año son clientes distintos</span><span class="i">Válido porque el ciclo de recompra supera los doce meses: un cliente no se repite dentro del año calendario. Si el ciclo real fuera menor a doce meses, habría doble conteo y la cifra bajaría.</span></div>
+    <div class="act"><span class="w">Supuesto</span><span class="t">Boca a boca: 2,5 personas por detractor, 6% de conversión perdida</span><span class="i">El componente más frágil del modelo. El escenario conservador lo reduce a la mitad y aun así la pérdida supera los Gs. 7.700 millones.</span></div>
+    <div class="act"><span class="w">Supuesto</span><span class="t">La muestra representa a la base facturada</span><span class="i">1.099 respuestas sobre 26.762 clientes de junio, un 4,1% de tasa de respuesta. Las proporciones de junio se aplican a todo el año. Con sesgo probable hacia el cliente satisfecho, el 8,6% de detractores es más un piso que un techo.</span></div>
+    <div class="act"><span class="w">Dato</span><span class="t">Estacionalidad del ticket</span><span class="i">Junio cierra con un ticket de Gs. 2.874.487, un 6,4% por debajo del promedio anual de Gs. 3.072.000. La proyección usa el ticket anual, no el de junio, para no subestimar la pérdida. El margen del 31,8% se aplica uniforme por categoría.</span></div>
   </div>
 
   <h3 class="sec">Sobre el análisis de sentimiento</h3>
@@ -500,14 +535,16 @@ document.getElementById("stages").innerHTML=et.map(e=>`
  <span class="val" style="top:calc(${y(e[1])}% ${e[1]>=0?'- 28px':'+ 13px'});color:${c(e[1])}">${e[1]>0?"+":"−"}${Math.abs(e[1]).toFixed(2)}</span>
 </div><div class="lab">${e[0]}<b>n=${e[2]}</b></div></div>`).join("");
 
-/* nps por tema */
-const temas=[["Postventa",-36,14],["Atención y venta",15,34],["Entrega",32,44],["Stock",42,12],["Cobranza",46,87],["Otros",52,31],["Crédito y financ.",58,38]];
-const axN=`<div class="axis"><span></span><div class="axis-in">${[-100,-50,0,50,100].map(t=>`<span style="left:${(t+100)/2}%">${t>0?"+":""}${t}</span>`).join("")}</div><span></span></div>`;
+/* nps por tema, con referencia al global +75.6 */
+const GLOB=75.6;
+const temas=[["Postventa",-36,14],["Atención y venta",15,34],["Entrega",32,44],["Stock",42,12],["Cobranza",46,87],["Crédito y financ.",58,38]];
+const px=v=>(v+100)/2;
+const axN=`<div class="axis"><span></span><div class="axis-in">${[-100,-50,0,50,100].map(t=>`<span style="left:${px(t)}%">${t>0?"+":""}${t}</span>`).join("")}<span style="left:${px(GLOB)}%;color:var(--ink);font-weight:600">+75,6 global</span></div><span></span></div>`;
 document.getElementById("npsbars").innerHTML=axN+temas.map(t=>{
   const neg=t[1]<0,w=Math.abs(t[1])/2,col=neg?"var(--coral)":(t[1]<40?"var(--amber)":"var(--teal)");
   return `<div class="bar-row"><span>${t[0]} <small style="color:var(--soft)">(${t[2]})</small></span>
-  <span class="npsbar"><i class="npsmid"></i><i class="npsfill" style="${neg?"right:50%":"left:50%"};width:0;background:${col}" data-w="${w}"></i></span>
-  <em style="color:${col}">${t[1]>0?"+":""}${t[1]}</em></div>`}).join("");
+  <span class="npsbar"><i class="npsmid"></i><i class="npsglob" style="left:${px(GLOB)}%"></i><i class="npsfill" style="${neg?"right:50%":"left:50%"};width:0;background:${col}" data-w="${w}"></i></span>
+  <em style="color:${col}">${t[1]>0?"+":""}${t[1]}<b style="display:block;font-weight:400;font-size:10.5px;color:var(--coral)">${(t[1]-GLOB).toFixed(0)}</b></em></div>`}).join("");
 
 /* volumen */
 const vol=[["Cobranza",87,"var(--coral)"],["Entrega",44,"var(--coral)"],["Crédito y financ.",38,"var(--amber)"],["Atención y venta",34,"var(--coral)"],["Otros",31,"var(--soft)"],["Postventa",14,"var(--coral)"],["Stock",12,"var(--amber)"]];
