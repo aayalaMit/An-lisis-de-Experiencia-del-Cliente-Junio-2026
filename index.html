@@ -428,17 +428,17 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
   </div>
 
   <div class="card" style="margin-bottom:14px;border-left:3px solid var(--violet)">
-    <h4 class="gtit">Las dos palancas, comparadas</h4>
+    <h4 class="gtit">Cuánto se puede reducir y cuánto queda</h4>
     <div class="scroll"><table>
-      <thead><tr><th>Palanca</th><th>Qué hace</th><th>Ahorro anual</th><th>Estado</th><th>Inversión</th></tr></thead>
+      <thead><tr><th>Concepto</th><th>Margen</th><th>Acumulado</th><th>Estado</th></tr></thead>
       <tbody>
-        <tr><td><b>Rescate de accionables</b></td><td>Resolver el caso concreto del detractor (pieza faltante, producto dañado, garantía). Ya se ejecuta sobre el 100% de los casos accionables</td><td class="num">Gs. 1.084 M</td><td>Operativo</td><td>Ninguna</td></tr>
-        <tr><td><b>Mejora del rescate</b></td><td>Validar cédula en la encuesta, reducir fallas de contacto. La tasa sube del 54% al 70%</td><td class="num">Gs. 1.400 M</td><td>Inmediato</td><td>Mínima</td></tr>
-        <tr style="background:rgba(14,124,107,.05)"><td><b>Corrección de causa raíz</b></td><td>Cobranza, entrega y postventa. Si la tasa de detractores baja del 8,6% al 6%</td><td class="num"><b>Gs. 2.368 M</b></td><td>Un trimestre</td><td>Proceso y sistemas</td></tr>
-        <tr style="background:rgba(14,124,107,.05)"><td><b>Causa raíz + rescate mejorado</b></td><td>Ambas palancas combinadas</td><td class="num"><b>Gs. 3.768 M</b></td><td>Un trimestre</td><td>Combinada</td></tr>
+        <tr><td><b>Pérdida bruta estimada</b></td><td class="num"></td><td class="num"><b>Gs. 14.038 M</b></td><td></td></tr>
+        <tr><td>Rescate de accionables (ya operativo, tasa 54%)</td><td class="num" style="color:var(--teal)">−1.084 M</td><td class="num">12.954 M</td><td>Ya se ejecuta</td></tr>
+        <tr><td>Validar cédula en encuesta (tasa sube a ~65%)</td><td class="num" style="color:var(--teal)">−316 M</td><td class="num">12.638 M</td><td>Inmediato</td></tr>
+        <tr style="background:rgba(14,124,107,.05)"><td>Corrección de causa raíz (detractores de 8,6% a 6%)</td><td class="num" style="color:var(--teal)"><b>−2.368 M</b></td><td class="num"><b>10.270 M</b></td><td>Un trimestre</td></tr>
+        <tr><td colspan="4" style="color:var(--soft);font-size:12.5px;padding-top:16px"><b style="color:var(--ink)">Gs. 10.270 M que siguen sin cubrirse:</b> fuga de pasivos, boca a boca, y los detractores que persisten al 6%. Para bajarlos más habría que atacar la experiencia del pasivo, reducir detractores por debajo del 6%, o aumentar la frecuencia de recompra — palancas que hoy no están cuantificadas con la misma base.</td></tr>
       </tbody>
     </table></div>
-    <p class="foot">No son alternativas, son complementarias. Pero la causa raíz rinde más del doble que el rescate, y es la única que mueve la composición del problema: genera menos detractores sistémicos en vez de intentar rescatar a quienes no se puede llamar. Suspender el contacto de cobranza previo al vencimiento, con costo cero, pertenece a esta categoría.</p>
   </div>
 
   <h3 class="sec">El escenario base, desarmado</h3>
@@ -462,12 +462,13 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
       </ul>
     </div>
     <div class="card" style="border-left:3px solid var(--teal)">
-      <h4 class="gtit">Cuánto es recuperable</h4>
+      <h4 class="gtit">Cuánto se puede reducir</h4>
       <ul>
-        <li>25.770 detractores al año, de los cuales hoy se contacta al 25,5%.</li>
-        <li>Con la tasa de éxito observada del 54,2%, llevar la cobertura al 80% rescata <b>7.612 detractores por año</b>.</li>
-        <li>Margen protegido: <b>Gs. 2.314 millones al año</b>, unos Gs. 193 millones por mes.</li>
-        <li>Es el 16,5% de la pérdida estimada, obtenido sin invertir en precio, producto ni publicidad.</li>
+        <li>El rescate actual ya protege <b>Gs. 1.084 millones al año</b> y está operativo.</li>
+        <li>Validar la cédula en la encuesta agrega Gs. 316 M (reduce fallas de contacto).</li>
+        <li>Bajar detractores del 8,6% al 6% por corrección de causa raíz agrega <b>Gs. 2.368 M</b> — es la palanca de mayor retorno.</li>
+        <li>Las tres juntas reducen la pérdida en <b>Gs. 3.768 M</b>, del 14.038 a 10.270.</li>
+        <li>Los Gs. 10.270 M restantes requieren palancas adicionales hoy no cuantificadas.</li>
       </ul>
     </div>
   </div>
@@ -642,8 +643,8 @@ ul{margin:0;padding-left:18px}li{margin-bottom:9px;font-size:14px}li:last-child{
   <h3 class="sec">El cruce NPS × CSAT</h3>
   <div class="card scroll" style="margin-bottom:14px">
     <table>
-      <thead><tr><th></th><th colspan="2">CSAT Entrega</th><th colspan="2">CSAT Atención</th><th>Total</th></tr>
-      <tr><th></th><th>4–5 (bien)</th><th>1–3 (mal)</th><th>4–5 (bien)</th><th>1–3 (mal)</th><th></th></tr></thead>
+      <thead><tr><th></th><th style="text-align:center" colspan="2">CSAT Entrega</th><th style="text-align:center" colspan="2">CSAT Atención</th><th style="text-align:center">Total</th></tr>
+      <tr><th></th><th style="text-align:center">4–5 (bien)</th><th style="text-align:center">1–3 (mal)</th><th style="text-align:center">4–5 (bien)</th><th style="text-align:center">1–3 (mal)</th><th></th></tr></thead>
       <tbody>
         <tr><td><b>Promotores</b></td><td class="num">881</td><td class="num" style="color:var(--coral)"><b>44</b></td><td class="num">911</td><td class="num" style="color:var(--coral)"><b>14</b></td><td class="num">925</td></tr>
         <tr><td>Pasivos</td><td class="num">65</td><td class="num">15</td><td class="num">74</td><td class="num">6</td><td class="num">80</td></tr>
